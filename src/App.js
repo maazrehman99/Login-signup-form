@@ -12,20 +12,20 @@ import { useSelector } from 'react-redux';
 
 function App() {
   
-  const login = useSelector((state) => state.user.isLoggedIn);
+  
 
   return (
     <BrowserRouter>
-    <Navbar/>
-    <Routes>
-      <Route path="/" exact element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-       {login} ? <Route path="/profile" element={<UserProfile />}  /> : <Route path="/login" element={<Login />} />
-    </Routes>
-    
+      <Navbar />
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 }

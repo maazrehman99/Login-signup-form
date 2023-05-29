@@ -15,7 +15,6 @@ const Signup = () => {
 
   const signUP = (event) => {
     event.preventDefault();
-    alert("Signup Successful");
     const userData = {
       email: document.getElementById("email").value,
       password: document.getElementById("password").value,
@@ -27,6 +26,8 @@ const Signup = () => {
     dispatch({ type: "SET_LOGIN_STATUS", payload: true });
      dispatch({ type: "SET_USER_DETAILS", payload: userData });
     navigate("/profile");
+        alert("Signup Successful");
+
   };
 
   return (

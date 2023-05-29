@@ -20,9 +20,10 @@ const Login = () => {
     });
 
     if (user) {
-      alert("Login Successful");
       dispatch({ type: "SET_LOGIN_STATUS", payload: true });
       navigate("/profile");
+            alert("Login Successful");
+
     } else {
       alert("Please Sign up");
     }
