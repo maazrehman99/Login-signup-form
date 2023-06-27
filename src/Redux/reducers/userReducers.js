@@ -15,6 +15,14 @@ const userReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: action.payload,
       };
+    case "EDIT_USER_DETAILS":
+      return {
+        ...state,
+        userDetails: {
+          ...state.userDetails,
+          ...action.payload,
+        },
+      };
     default:
       return state;
   }

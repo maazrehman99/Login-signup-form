@@ -1,42 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-body{
-  background: #444545;
+body {
+  background: #ababab;
   overflow: hidden;
 }
-::selection{
-  background: rgba(26,188,156,0.3);
+::selection {
+  background: rgba(181, 181, 181, 0.3);
 }
-button{
+.btn-login {
   width: -webkit-fill-available;
   cursor: pointer;
   outline: none;
   border: none;
   border-radius: 4px;
   height: inherit;
-  background-color: #16a085;
+  background-color: #36b0e1;
   color: #fff;
   font-weight: bold;
 }
-.container{
+.edit-btn {
+  width: 20rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  background: #36b0e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  height: 2rem;
+  cursor: pointer;
+}
+.logout-btn {
+  width: 5rem;
+  height: 2rem;
+  color: white;
+  background: #ed1515;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1a1a1a;
+}
+.container {
   max-width: 440px;
   padding: 0 20px;
   margin: 170px auto;
 }
-.wrapper{
+.wrapper {
   width: 100%;
   background: #fff;
   border-radius: 5px;
-  box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
 }
-.wrapper .title{
+.wrapper .title {
   height: 90px;
-  background: #16a085;
+  background: #36b0e1;
   border-radius: 5px 5px 0 0;
   color: #fff;
   font-size: 30px;
@@ -45,15 +77,15 @@ button{
   align-items: center;
   justify-content: center;
 }
-.wrapper form{
+.wrapper form {
   padding: 30px 25px 25px 25px;
 }
-.wrapper form .row{
+.wrapper form .row {
   height: 45px;
   margin-bottom: 15px;
   position: relative;
 }
-.wrapper form .row input{
+.wrapper form .row input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -63,82 +95,83 @@ button{
   font-size: 16px;
   transition: all 0.3s ease;
 }
-form .row input:focus{
-  border-color: #16a085;
-  box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+form .row input:focus {
+  border-color: #36b0e1;
+  box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25);
 }
-form .row input::placeholder{
+form .row input::placeholder {
   color: #999;
 }
-.wrapper form .row i{
+.wrapper form .row i {
   position: absolute;
   width: 47px;
   height: 100%;
   color: #fff;
   font-size: 18px;
-  background: #16a085;
-  border: 1px solid #16a085;
+  background: #36b0e1;
+  border: 1px solid #36b0e1;
   border-radius: 5px 0 0 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.wrapper form .pass{
+.wrapper form .pass {
   margin: -8px 0 20px 0;
 }
-.wrapper form .pass a{
-  color: #16a085;
+.wrapper form .pass a {
+  color: #36b0e1;
   font-size: 17px;
   text-decoration: none;
 }
-.wrapper form .pass a:hover{
+.wrapper form .pass a:hover {
   text-decoration: underline;
 }
-.wrapper form .button input{
+.wrapper form .button input {
   color: #fff;
   font-size: 20px;
   font-weight: 500;
   padding-left: 0px;
-  background: #16a085;
-  border: 1px solid #16a085;
+  background: #36b0e1;
+  border: 1px solid #36b0e1;
   cursor: pointer;
 }
-form .button input:hover{
-  background: #12876f;
+form .button input:hover {
+  background: #27a4d6;
 }
-.wrapper form .signup-link{
+.wrapper form .signup-link {
   text-align: center;
   margin-top: 20px;
   font-size: 17px;
 }
-.wrapper form .signup-link a{
-  color: #16a085;
+.wrapper form .signup-link a {
+  color: #36b0e1;
   text-decoration: none;
 }
-form .signup-link a:hover{
+form .signup-link a:hover {
   text-decoration: underline;
 }
 
 ul.nav {
-    margin:0;
-    padding:0;
-    list-style:none;
-    height:36px; line-height:36px;
-    background:#0d7963; /* you can change the backgorund color here. */
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 36px;
+  line-height: 36px;
+  background: #36b0e1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
 }
 ul.nav li {
-    border-right:1px solid #189b80; /* you can change the border color matching to your background color */
-    float:left;
+  border-right: 1px solid #189b80;
+  float: left;
 }
 ul.nav a {
-    display:block;
-    padding:0 28px;
-    color:#ccece6;
-    text-decoration:none;
+  display: block;
+  padding: 0 28px;
+  color: #ccece6;
+  text-decoration: none;
 }
 ul.nav a:hover,
 ul.nav li.current a {
-    background:#086754;
+  background: #086754;
 }

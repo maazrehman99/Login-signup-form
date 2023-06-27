@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,10 +9,22 @@ const Navbar = () => {
   const navigate = useNavigate()
   
   const login = useSelector((state) => state.user.isLoggedIn);
-const logout = () => {
-  dispatch({ type: "SET_LOGIN_STATUS", payload: false });
-  navigate("/login");
-};
+
+
+
+
+  const handleLogout = () => {
+
+    Cookies.remove("loggedInUser");
+    Cookies.remove("usersData");
+
+ 
+    dispatch({ type: "SET_LOGIN_STATUS", payload: false });
+    dispatch({ type: "SET_USER_DETAILS", payload: null });
+
+    navigate("/login");
+    alert("Logged out successfully");
+  }
   return (
     <>
       <ul className="nav">
@@ -29,7 +42,9 @@ const logout = () => {
 
         {login ? (
           <li>
-            <button onClick={logout} >Logout</button>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
           </li>
         ) : (
           <></>

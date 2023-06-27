@@ -1,34 +1,52 @@
 import React, { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
 
 const Login = () => {
-  const [login, setLogin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate= useNavigate();
+  const navigate = useNavigate();
+  const users = useSelector((state) => state.users);
+const storedUserDetails = useSelector((state) => state.user.userDetails);
+ const handleLogin = (event) => {
+   event.preventDefault();
 
-  const loginbtn = (event) => {
-    event.preventDefault();
 
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPass").value;
-    const logindata = localStorage.getItem("usersData");
-    const parsedData = JSON.parse(logindata);
+   if (
+     storedUserDetails &&
+     storedUserDetails.email === email &&
+     storedUserDetails.password === password
+   ) {
+     dispatch({ type: "SET_LOGIN_STATUS", payload: true });
+     dispatch({ type: "SET_USER_DETAILS", payload: storedUserDetails });
+     Cookies.set("userDetails", JSON.stringify(storedUserDetails), {
+       expires: 2,
+     });
+     navigate("/profile");
+     alert("Login Successful");
+     return;
+   }
 
-    const user = parsedData.find((user) => {
-      return user.email === email && user.password === password;
-    });
 
-    if (user) {
-      dispatch({ type: "SET_LOGIN_STATUS", payload: true });
-      navigate("/profile");
-            alert("Login Successful");
+   const storedUserDetailsFromCookies = Cookies.get("userDetails");
+   if (storedUserDetailsFromCookies) {
+     const parsedUserDetails = JSON.parse(storedUserDetailsFromCookies);
+     if (
+       parsedUserDetails.email === email &&
+       parsedUserDetails.password === password
+     ) {
+       dispatch({ type: "SET_LOGIN_STATUS", payload: true });
+       dispatch({ type: "SET_USER_DETAILS", payload: parsedUserDetails });
+       navigate("/profile");
+       alert("Login Successful");
+       return;
+     }
+   }
 
-    } else {
-      alert("Please Sign up");
-    }
-    setLogin(true);
-  };
+   alert("Invalid email or password. Please try again.");
+ };
 
   return (
     <>
@@ -37,23 +55,31 @@ const Login = () => {
           <div className="title">
             <span>Login Form</span>
           </div>
-          <form action="#">
+          <form onSubmit={handleLogin}>
             <div className="row">
               <i className="fas fa-user"></i>
               <input
-                id="loginEmail"
-                type="text"
-                placeholder="Email or Phone"
+                type="email"
+                placeholder="xyz@email.com"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="row">
               <i className="fas fa-lock"></i>
-              <input id="loginPass" type="password" placeholder="Password" />
+              <input
+                type="password"
+                placeholder="Your Password Here"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div className="pass">Forgot password?</div>
             <div className="row button">
-              <button onClick={loginbtn}>Login</button>
+              <button className="btn-login" type="submit">
+                Login
+              </button>
             </div>
             <div className="signup-link">
               Not a member? <Link to="/signup">Signup Now</Link>
